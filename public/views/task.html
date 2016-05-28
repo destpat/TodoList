@@ -1,0 +1,8 @@
+<h1>Ma liste de tache 100% fron-end</h1>
+<input type="text" placeholder="Ajouter votre tache ici" ng-model="task">
+<button type="button" class="btn btn-success" ng-click="add()">Add task</button>
+<ul class="list-group" ng-repeat="name in names">
+  <div class="glyphicon glyphicon-remove" ng-click="removeTask($index)">
+    <li class="list-group-item" >{{name.todo}}</li>
+  </div>
+</ul>
