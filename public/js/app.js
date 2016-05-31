@@ -8,14 +8,12 @@ function config($routeProvider) {
 			redirectTo: '/'
 		});
 }
-function run($rootScope, $location){
-	var path = function() { return $location.path(); };
-	$rootScope.$watch(path, function(newVal, oldVal){
-		$rootScope.activetab = newVal;
-	});
-}
+// function run($rootScope, $location){
+// 	var path = function() { return $location.path(); };
+// 	$rootScope.$watch(path, function(newVal, oldVal){
+// 		$rootScope.activetab = newVal;
+// 	});
+// }
 angular.module('app', ['ngRoute'])
     .config(config)
-    .controller('taskController', taskController)
-    /*.factory('', )*/
-    .run(run);
+    .controller('taskController', taskController);

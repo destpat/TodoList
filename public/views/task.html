@@ -11,17 +11,17 @@
         <div class="panel-heading">
           <h4 class="panel-title">
             <span class="glyphicon glyphicon-remove" ng-click="delete($index)"></span>
-            <div ng-show="y == 0"><span class="glyphicon glyphicon-star-empty" ng-click="addFav($index)"></span></div>
-            <div ng-show="y == 1"><span class="glyphicon glyphicon-star" ng-click="addFav($index)"></span></div>
-            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" data-parent="#accordionInvit" data-target="#collapseInvit{{$index}}" style="cursor: pointer"></span>
+            <input type="checkbox" class="glyphicon glyphicon-star-empty" >
+            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" ng-click="storeTaskId($index)" data-parent="#accordionInvit" data-target="#collapseInvit{{$index}}" style="cursor: pointer"></span>
             <p>{{task.todo}}</p>
           </h4>
         </div>
         <div id="collapseInvit{{$index}}" class="panel-collapse collapse">
           <div class="panel-body">
-            <input type="text" placeholder="Sous tache" ng-model="subTasks">
-            <button type="button" class="btn btn-success" ng-click="subadd(subTasks, $index)">Add task</button>
+            <input type="text" placeholder="Sous tache" ng-model="subTask">
+            <button type="button" class="btn btn-success" ng-click="subadd(subTask, $index)">Add task</button>
             <div ng-repeat="task in task.subTasks">
+              <span class="glyphicon glyphicon-remove" ng-click="deleteSub($index)"></span>
               <p>{{task.todo}}</p>
             </div>
           </div>
