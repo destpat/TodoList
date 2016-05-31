@@ -1,3 +1,33 @@
+body {
+  background: url("../image/bg.jpg") no-repeat center fixed;
+  background-size: cover;
+}
+
+h1{
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.test{
+  text-align: center;
+  width: 500px;
+}
+.task{
+  width: 500px;
+}
+
+.glyphicon-star-empty{
+  float: right;
+}
+.inputTodo{
+  width: 50%;
+  margin-top: 5%;
+}
+
+/*.subTask{
+  width:
+}*/
+
 .glyphicon:before {
      visibility: visible;
 }

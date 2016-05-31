@@ -1,10 +1,11 @@
+
 <h1>Ma liste de tache 100% fron-end</h1>
 <div class="recherche">
-  <input type="text" placeholder="Ajouter votre tache ici" ng-model="todo">
-  <button type="button" class="btn btn-success" ng-click="add()">Add task</button>
+  <input type="text" class="form-control test" placeholder="Ajouter votre tâche" ng-model="todo">
+  <button type="button" class="btn btn-success" ng-click="add()">Je valide</button>
 </div>
 <span class="glyphicon glyphicon-remove" ng-click="deleteAll()"></span>
-<div role="tabpanel" class="tab-pane" id="profile">
+<div role="tabpanel" class="tab-pane task" id="profile">
   <div class="panne">
     <div class="panel-group" id="accordionInvit">
       <div class="panel panel-default" ng-repeat="task in tasks">
@@ -18,8 +19,8 @@
         </div>
         <div id="collapseInvit{{$index}}" class="panel-collapse collapse">
           <div class="panel-body">
-            <input type="text" placeholder="Sous tache" ng-model="subTask">
-            <button type="button" class="btn btn-success" ng-click="subadd(subTask, $index)">Add task</button>
+            <input type="text" placeholder="Ajouter votre sous tâche" ng-model="subTask">
+            <button type="button" class="btn btn-success" ng-click="subadd(subTask, $index)">Je Valide</button>
             <div ng-repeat="task in task.subTasks">
               <span class="glyphicon glyphicon-remove" ng-click="deleteSub($index)"></span>
               <p>{{task.todo}}</p>

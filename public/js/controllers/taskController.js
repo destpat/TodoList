@@ -1,5 +1,5 @@
 function taskController($scope){
-  $scope.tasks = [];
+$scope.tasks = [];
 
   $scope.add = function (){
     $scope.tasks.push({
@@ -10,7 +10,9 @@ function taskController($scope){
     $scope.todo = '';
   };
   $scope.subadd = function (subTask, index){
-    console.log($scope.tasks[index].subTasks.length);
+    if($scope.tasks[index].subTasks.length > 2){
+      return alert("Vous ne pouvez ajouter que 3 sous tâches");
+    }
     $scope.tasks[index].subTasks.push({
         todo : subTask,
       });
