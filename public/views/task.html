@@ -1,33 +1,58 @@
+<h1 class="element typed">{{title}}</h1>
 
-<h1>Ma liste de tache 100% fron-end</h1>
-<div class="recherche">
-  <input type="text" class="form-control test" placeholder="Ajouter votre tâche" ng-model="todo">
-  <button type="button" class="btn btn-success" ng-click="add()">Je valide</button>
-</div>
-<span class="glyphicon glyphicon-remove" ng-click="deleteAll()"></span>
-<div role="tabpanel" class="tab-pane task" id="profile">
-  <div class="panne">
-    <div class="panel-group" id="accordionInvit">
-      <div class="panel panel-default" ng-repeat="task in tasks">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <span class="glyphicon glyphicon-remove" ng-click="delete($index)"></span>
-            <input type="checkbox" class="glyphicon glyphicon-star-empty" >
-            <span class="glyphicon glyphicon-chevron-down" data-toggle="collapse" ng-click="storeTaskId($index)" data-parent="#accordionInvit" data-target="#collapseInvit{{$index}}" style="cursor: pointer"></span>
-            <p>{{task.todo}}</p>
-          </h4>
-        </div>
-        <div id="collapseInvit{{$index}}" class="panel-collapse collapse">
-          <div class="panel-body">
-            <input type="text" placeholder="Ajouter votre sous tâche" ng-model="subTask">
-            <button type="button" class="btn btn-success" ng-click="subadd(subTask, $index)">Je Valide</button>
-            <div ng-repeat="task in task.subTasks">
-              <span class="glyphicon glyphicon-remove" ng-click="deleteSub($index)"></span>
-              <p>{{task.todo}}</p>
+<div class="container">
+  <div class="row valign-wrapper">
+    <div class="input-field col s5 ">
+      <input class="texttask white-text" id="input_task" type="text" ng-model="todo">
+      <label for="input_task">
+        <span class="inputTask">Noter pour ne pas oublier : )</span>
+      </label>
+    </div>
+    <div class="col s3">
+      <!-- Add Task -->
+      <button type="button" id="taskButton" class="btn waves-effect waves-light btnValidtTask" ng-click="add()">Je valide</button>
+    </div>
+    <div class="col s4 valign">
+      <span class="removeAllTask">
+        <!-- Delete All Task -->
+        <i class="glyphicon glyphicon-remove left" ng-click="deleteAll()"></i>Supprimer toutes les tâches</span>
+    </div>
+  </div>
+  <ul class="collapsible popout bgtask" data-collapsible="accordion">
+    <!-- Show or hide the sentence -->
+    <p ng-show="show" class="textTaskEmpty">Vous n'avez pas encore de tâche</p>
+    <li ng-repeat="task in tasks">
+      <div class="row">
+        <!-- Change color of star -->
+        <span class="glyphicon glyphicon-star-empty col push-s10 star" id="star{{$index}}" ng-click="starColor($index)"></span>
+        <!-- Delete only one task -->
+        <span class="glyphicon glyphicon-remove col push-s10 removeTask" ng-click="delete($index)"></span>
+      </div>
+      <!-- Store the Task id for delete only one sub task -->
+      <div class="collapsible-header titleTask col s7 v" ng-click="storeTaskId($index)">{{task.todo}}</div>
+      <div class="collapsible-body">
+        <div class="row">
+          <div class="col s8">
+            <div class="input-field ">
+              <input class="texttask black-text" id="object-{{$index}}" type="text" ng-model="task.currentSubtask">
+              <label for="input_sub_task">
+                <span class="inputSubTask">Ajouter vos sous tâches</span>
+              </label>
             </div>
+          </div>
+          <div class="col s4">
+            <button type="button" class="btn btn-success" ng-click="subadd(task.currentSubtask, $index)">Je valide</button>
+          </div>
+        </div>
+        <div ng-repeat="subtask in task.subTasks">
+          <div class="row">
+            <span>
+              <!-- Delete one sub Task -->
+              <i class="glyphicon glyphicon-remove removeSubTask col push-s9" ng-click="deleteSub($index)"></i>{{subtask.todo}}</span>
+            <div class="divider"></div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>

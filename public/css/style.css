@@ -2,39 +2,68 @@ body {
   background: url("../image/bg.jpg") no-repeat center fixed;
   background-size: cover;
 }
-
-h1{
+h1 {
   text-align: center;
   color: #FFFFFF;
 }
-
-.test{
-  text-align: center;
-  width: 500px;
+i {
+  cursor: pointer;
 }
-.task{
-  width: 500px;
+.toast {
+  font-size: 1.5rem;
 }
-
-.glyphicon-star-empty{
-  float: right;
-}
-.inputTodo{
+.inputTodo {
   width: 50%;
   margin-top: 5%;
 }
-
-/*.subTask{
-  width:
-}*/
-
-.glyphicon:before {
-     visibility: visible;
+.bgtask {
+  background-color: #ffffff;
+  padding: 30px;
 }
-.glyphicon.glyphicon-star-empty:checked:before {
-    content: "\e006";
+.inputTask {
+  font-size: 1.9em;
+}
+.inputSubTask {
+  font-size: 1.6em;
+  margin-top: 100px;
+}
+.titleTask {
+  margin-bottom: 15px;
+  font-size: 1.6em;
+}
+.textTaskEmpty {
+  text-align: center;
+}
+input[type="text"] {
+  font-size: 1.3em;
+}
+.removeAllTask {
+  color: #ffffff;
+}
+.removeTask {
+  color: #000000;
+}
+.removeSubTask {
+  margin: 5px 0 5px 0;
+}
+.btnValidtTask {
+  margin-top: 10px;
+}
+.star, .removeTask {
+  font-size: 25px;
+  position: relative;
+  top: 4vh;
+  cursor: pointer;
+}
+.divider {
+  width: 70%;
 }
 
-input[type=checkbox].glyphicon{
-     visibility: hidden;
+/*Typed*/
+
+.typed {
+  height: 20px;
+}
+.typed-cursor {
+  display: none;
 }

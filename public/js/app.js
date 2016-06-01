@@ -8,6 +8,7 @@ function config($routeProvider) {
 		.otherwise({
 			redirectTo: '/'
 		});
+
 }
 
 angular.module('app', ['ngRoute'])
