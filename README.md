@@ -1,5 +1,6 @@
-#TodoList
-Exercice :
+##TodoList
+
+###Exercice :
 
 Réalisation d’une todolist fonctionnant en local. Aucun stockage pérenne des données n’est attendu (pas besoin d’AJAX, de partie serveur ou de stockage HTML5).
 La todolist en question doit permettre les fonctionnalités suivantes :
@@ -11,4 +12,11 @@ La todolist en question doit permettre les fonctionnalités suivantes :
 - Possibilité de marquer les tâches comme « tâche importante »
 Le refresh de la page (F5) remet l’application à zéro (aucune conservation des données).
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+#### Preview
+
+![Image of Yaktocat](https://raw.githubusercontent.com/destpat/TodoList/imgPage/screanShootTodo/2.png)
+![Image of Yaktocat](https://raw.githubusercontent.com/destpat/TodoList/imgPage/screanShootTodo/1.png)
+
+#### Run app
+
+Lancer index.html, avec firefox, ou avec http-server
