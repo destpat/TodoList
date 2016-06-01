@@ -54,7 +54,7 @@ function taskController($scope) {
 
     // Notification
     if ($scope.tasks[index].isFav)
-      Materialize.toast('Vous avez ajouter votre tâche en favoris', 3900000000000 , 'blue lighten-1');
+      Materialize.toast('Vous avez ajouter votre tâche en favoris', 3900 , 'blue lighten-1');
     else
       Materialize.toast('Vous avez retirer votre tâche de vos favoris', 3900, 'blue lighten-1');
   };
