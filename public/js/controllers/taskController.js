@@ -20,7 +20,7 @@ function taskController($scope) {
   $scope.add = function() {
     // Check if input is empty //
     if(!$scope.todo)
-      return Materialize.toast('Avez vous déja oublier ce que vous deviez faire ?', 3900,'red');
+      return Materialize.toast('Avez vous déjà oublier, ce que vous deviez faire ?', 3900,'red');
 
     $scope.tasks.push({
       todo: $scope.todo,
