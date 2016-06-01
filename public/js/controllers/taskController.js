@@ -1,26 +1,30 @@
 function taskController($scope) {
+
   $(document).ready(function() {
     $('.collapsible').collapsible({
       accordion: false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   });
-  $scope.title = $(".element").typed({
-        strings: ["Ma liste de tâche", "Ma liste de tâche 100% front-end"],
+
+  $("#title").typed({
+        strings: ["Ma liste de tâches . . .", "Ma liste de tâches 100% front-end"],
         startDelay: 800,
         backSpeed: 60,
-        typeSpeed: 60,
+        typeSpeed: 60
       });
   $scope.tasks = [];
   $scope.show = true; // boolean for hide or show "Vous n'avez pas encore de tâche"
+  var selectedTaskId = -1;
 
   // Add Tasks //
   $scope.add = function() {
     // Check if input is empty //
-    if($('#input_task').val() === ''){
-    return Materialize.toast('Avez vous déja oublier ce que vous deviez faire ?', 3900,'red');
-    }
+    if(!$scope.todo)
+      return Materialize.toast('Avez vous déja oublier ce que vous deviez faire ?', 3900,'red');
+
     $scope.tasks.push({
       todo: $scope.todo,
+      isFav: false,
       subTasks: [],
     });
     $scope.todo = '';
@@ -28,53 +32,52 @@ function taskController($scope) {
   };
 
   // Add Sub Task //
-  $scope.subadd = function(subTask, index) {
+  $scope.subadd = function(index, ctx) {
     // Check if input is empty //
-    var subTarget = "#object-" + index;
-    if($(subTarget).val() === ''){
-    return Materialize.toast('Votre sous tâche est vide : )', 3900 ,'red');
+    if(ctx.subtask === ''){
+      return Materialize.toast('Votre sous tâche est vide : )', 3900 ,'red');
     }
     // Check if number of subTask is greater than 3 //
     if ($scope.tasks[index].subTasks.length > 2) {
       return Materialize.toast('Vous ne pouvez ajouter que 3 sous tâches', 3900, 'red');
     }
       $scope.tasks[index].subTasks.push({
-        todo: subTask,
+        todo: ctx.subtask,
       });
-      $scope.tasks[index].currentSubtask = "";
+      ctx.subtask = "";
   };
 
   // Change color of the star //
   $scope.starColor = function(index) {
     var starTarget = "#star" + index;
-    if ($(starTarget).hasClass('glyphicon-star')) {
-        $(starTarget).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-      Materialize.toast('Vous avez retirer votre tâche des favories', 3900, 'blue lighten-1');
-    } else if ($(starTarget).hasClass('glyphicon-star-empty')) {
-      $(starTarget).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
-      Materialize.toast('Vous avez ajouter votre tâche en favorie', 3900 , 'blue lighten-1');
-    }
+    $scope.tasks[index].isFav = !$scope.tasks[index].isFav;
+
+    // Notification
+    if ($scope.tasks[index].isFav)
+      Materialize.toast('Vous avez ajouter votre tâche en favoris', 3900000000000 , 'blue lighten-1');
+    else
+      Materialize.toast('Vous avez retirer votre tâche de vos favoris', 3900, 'blue lighten-1');
   };
 
   // Delete all task //
   $scope.deleteAll = function() {
     $scope.tasks = [];
     $scope.show = true;
-    console.log($scope.show);
   };
+
   // Delete only one task //
   $scope.delete = function(index) {
     $scope.tasks.splice(index, 1);
-    if ($scope.tasks.length === 0) {
-      $scope.show = true;
-    }
+    $scope.show = ($scope.tasks.length === 0);
   };
+
   // Store the Task id for delete only one sub task //
   $scope.storeTaskId = function(index) {
-    task_id = index;
+    selectedTaskId = index;
   };
+
   // Delete Only one sub task //
   $scope.deleteSub = function(index) {
-    $scope.tasks[task_id].subTasks.splice(index, 1);
+    $scope.tasks[selectedTaskId].subTasks.splice(index, 1);
   };
 }
