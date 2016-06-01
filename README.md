@@ -10,3 +10,5 @@ La todolist en question doit permettre les fonctionnalités suivantes :
 - Suppression de l’ensemble des tâches
 - Possibilité de marquer les tâches comme « tâche importante »
 Le refresh de la page (F5) remet l’application à zéro (aucune conservation des données).
+
+![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
